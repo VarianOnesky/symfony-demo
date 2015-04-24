@@ -17,3 +17,7 @@ data_update_product:
 data_delete_product:
     path:     /product/delete/{id}
     defaults: { _controller: DataBundle:Default:delete }
+
+data_show_product_by_category:
+    path:     /product/show-by-category/{id}
+    defaults: { _controller: DataBundle:Default:showProducts }

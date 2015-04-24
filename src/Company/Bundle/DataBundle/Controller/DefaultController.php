@@ -79,4 +79,17 @@ class DefaultController extends Controller
         $em->remove($product);
         $em->flush();
     }
+
+    public function showProductsAction($id)
+    {
+        $category = $this->getDoctrine()->getRepository('DataBundle:Category')
+            ->find($id);
+
+        $products = $category->getProducts();
+
+        return $this->render(
+            'DataBundle:Product:show-by-category.html.twig',
+            array ('products' => $products)
+        );
+    }
 }
