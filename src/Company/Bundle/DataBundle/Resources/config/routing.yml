@@ -5,3 +5,7 @@ data_homepage:
 data_create_product:
     path:     /product/create
     defaults: { _controller: DataBundle:Default:create }
+
+data_show_product:
+    path:     /product/show/{id}
+    defaults: { _controller: DataBundle:Default:show }

@@ -25,6 +25,23 @@ class DefaultController extends Controller
         $em->persist($product);
         $em->flush();
 
-        return new Response('Created product id '.$product->getId());
+        return new Response('Created Product id '.$product->getId());
+    }
+
+    public function showAction($id)
+    {
+        $product = $this->getDoctrine()->getRepository('DataBundle:Product')
+            ->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No Product found for id '.$id
+            );
+        }
+
+        return $this->render(
+            'DataBundle:Product:show.html.twig',
+            array ('Product' => $product)
+        );
     }
 }
