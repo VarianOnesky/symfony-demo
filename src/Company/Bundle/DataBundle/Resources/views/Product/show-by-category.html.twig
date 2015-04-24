@@ -1,9 +1,14 @@
-<h2>Products</h2>
+<html>
+<head></head>
+<body>
+    <h2>Products</h2>
 
-{% for product in products %}
-    <h3>Id: {{ product.id }}</h3>
-    <h3>Name: {{ product.name }}</h3>
-    <h3>Price: {{ product.price }}</h3>
-    <h3>Category: {{ product.category.name }}</h3>
-    <br/><br/>
-{% endfor %}
+    {% for product in products %}
+        <h3>Id: {{ product.id }}</h3>
+        <h3>Name: {{ product.name }}</h3>
+        <h3>Price: {{ product.price }}</h3>
+        <h3>Category: {{ product.category.name }}</h3>
+        <br/><br/>
+    {% endfor %}
+</body>
+</html>
