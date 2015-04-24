@@ -1,3 +1,7 @@
 data_homepage:
     path:     /hello/{name}
     defaults: { _controller: DataBundle:Default:index }
+
+data_create_product:
+    path:     /product/create
+    defaults: { _controller: DataBundle:Default:create }
