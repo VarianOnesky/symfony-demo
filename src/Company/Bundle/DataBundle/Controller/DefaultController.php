@@ -16,8 +16,15 @@ class DefaultController extends Controller
 
     public function createAction()
     {
-        $category = new Category();
-        $category->setName('Main Product');
+        $categoryName = "Main Product";
+
+        $category = $this->getDoctrine()->getRepository('DataBundle:Category')
+            ->findOneBy(array("name" => $categoryName));
+
+        if (!$category) {
+            $category = new Category();
+            $category->setName($categoryName);
+        }
 
         $product = new Product();
         $product->setName('Foo');
@@ -27,6 +34,7 @@ class DefaultController extends Controller
         $product->setCategory($category);
 
         $em = $this->getDoctrine()->getManager();
+
         $em->persist($category);
         $em->persist($product);
         $em->flush();
