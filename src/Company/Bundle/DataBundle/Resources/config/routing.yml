@@ -9,3 +9,11 @@ data_create_product:
 data_show_product:
     path:     /product/show/{id}
     defaults: { _controller: DataBundle:Default:show }
+
+data_update_product:
+    path:     /product/update/{id}
+    defaults: { _controller: DataBundle:Default:update }
+
+data_delete_product:
+    path:     /product/delete/{id}
+    defaults: { _controller: DataBundle:Default:delete }

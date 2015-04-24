@@ -44,4 +44,31 @@ class DefaultController extends Controller
             array ('Product' => $product)
         );
     }
+
+    public function updateAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $em->getRepository('DataBundle:Product')->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No Product found for id '.$id
+            );
+        }
+
+        $product->setName('This is a great Product!');
+        $em->flush();
+
+        return $this->redirectToRoute('data_show_product', array('id' => $id));
+    }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $product = $em->getRepository('DataBundle:Product')->find($id);
+
+        $em->remove($product);
+        $em->flush();
+    }
 }
